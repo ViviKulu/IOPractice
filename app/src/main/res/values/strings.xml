@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Townhall</string>
+    <string name="new_petition">Publish a new petition for your community</string>
+    <string name="begin_typing">Begin Typing ...</string>
+    <string name="submit">Submit Petition</string>
+    <string name="title">Title of Petition</string>
+    <string name="no_petitions">No petitions available</string>
 </resources>

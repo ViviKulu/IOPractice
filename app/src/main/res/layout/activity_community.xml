@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.vivianbabiryekulumba.townhall.SwipePetitionActivity">
+    tools:context="com.example.vivianbabiryekulumba.townhall.CommunityActivity">
 
-<<<<<<< HEAD
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <android.support.v7.widget.CardView
-        android:id="@+id/card_swipe"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
-=======
->>>>>>> master
 </android.support.constraint.ConstraintLayout>
