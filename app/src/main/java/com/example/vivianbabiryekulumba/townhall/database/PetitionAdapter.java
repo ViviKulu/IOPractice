@@ -38,7 +38,7 @@ public class PetitionAdapter extends RecyclerView.Adapter<PetitionAdapter.Petiti
         }
     }
 
-    void setPetitionsList(List<Petition> petitions){
+    public void setPetitionsList(List<Petition> petitions){
         this.petitionsList = petitions;
         notifyDataSetChanged();
     }
