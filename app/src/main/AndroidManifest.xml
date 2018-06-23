@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerPetitonActivity" />
+        <activity android:name=".RecyclerPetitionActivity" />
         <activity android:name=".NewPetitionActivity" />
         <activity android:name=".CommunityActivity"></activity>
     </application>
