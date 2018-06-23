@@ -24,7 +24,7 @@ public class RecyclerPetitionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_petiton);
 
         petitions_recycler = findViewById(R.id.recycler_petition);
-        PetitionAdapter petitionAdapter = new PetitionAdapter(this);
+        petitionAdapter = new PetitionAdapter(this);
         petitions_recycler.setAdapter(petitionAdapter);
         petitions_recycler.setLayoutManager(new LinearLayoutManager(this));
         petitionViewModel.getAllPetitions().observe(this, petitionAdapter::setPetitionsList);
