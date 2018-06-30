@@ -5,4 +5,6 @@
     <string name="submit">Submit Petition</string>
     <string name="title">Title of Petition</string>
     <string name="no_petitions">No petitions available</string>
+    <string name="fill">fill</string>
+    <string name="action_settings">Settings</string>
 </resources>
