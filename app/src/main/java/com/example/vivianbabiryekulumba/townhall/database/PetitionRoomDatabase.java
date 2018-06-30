@@ -9,7 +9,7 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 
-@Database(entities = Petition.class, version = 1)
+@Database(entities = Petition.class, version = 1, exportSchema = false)
 public abstract class PetitionRoomDatabase extends RoomDatabase{
 
     public abstract PetitionDAO petitionDAO();
@@ -19,8 +19,11 @@ public abstract class PetitionRoomDatabase extends RoomDatabase{
         if(INSTANCE == null){
             synchronized (PetitionRoomDatabase.class){
                 if(INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PetitionRoomDatabase.class,
-                            "petition_database").addCallback(roomDatabaseCallback).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                            PetitionRoomDatabase.class, "petition_database")
+                            .fallbackToDestructiveMigration()
+                            .addCallback(roomDatabaseCallback)
+                            .build();
                 }
             }
         }
@@ -46,10 +49,11 @@ public abstract class PetitionRoomDatabase extends RoomDatabase{
         @Override
         protected Void doInBackground(Void... voids) {
             petitionDAO.deleteAll();
-            Petition petition1 = new Petition("First petition");
-            petitionDAO.insert(petition1);
-            Petition petition2 = new Petition("Second Petition");
-            petitionDAO.insert(petition2);
+
+            Petition petition = new Petition("First petition");
+            petitionDAO.insert(petition);
+            petition = new Petition("Second Petition");
+            petitionDAO.insert(petition);
             return null;
         }
     }

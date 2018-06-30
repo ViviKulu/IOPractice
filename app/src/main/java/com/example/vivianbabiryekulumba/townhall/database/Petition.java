@@ -1,5 +1,6 @@
 package com.example.vivianbabiryekulumba.townhall.database;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
@@ -10,17 +11,16 @@ public class Petition {
 
     @PrimaryKey()
     @NonNull
+    @ColumnInfo(name = "petition")
     private String petition;
 
-    public Petition(String petition) {
-        this.petition = this.petition;
+    public Petition(@NonNull String petition) {
+        this.petition = petition;
     }
 
+    @NonNull
     public String getPetition() {
         return petition;
     }
 
-    public void setPetition(String petition) {
-        this.petition = petition;
-    }
 }
