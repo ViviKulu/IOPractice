@@ -52,7 +52,7 @@ public abstract class PetitionRoomDatabase extends RoomDatabase{
 
             Petition petition = new Petition("First petition");
             petitionDAO.insert(petition);
-            petition = new Petition("Second Petition");
+            petition = new Petition("Second ApplicationPOJO");
             petitionDAO.insert(petition);
             return null;
         }

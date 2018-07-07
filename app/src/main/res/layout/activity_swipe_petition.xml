@@ -1,39 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.vivianbabiryekulumba.townhall.SwipePetitionActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBlack"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/see_my_pet_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#fff"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/sub_new_pet_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#fff"
+        android:textSize="26sp" />
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="bottom"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
-            android:id="@+id/rejectBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/cancel"
-            android:contentDescription="@string/fill" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/acceptBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/heart"
-            android:contentDescription="@string/fill"
-            android:layout_marginStart="30dp" />
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/rejectBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/cancel"
+                android:contentDescription="@string/fill" />
 
-    <com.mindorks.placeholderview.SwipePlaceHolderView
-        android:id="@+id/swipeView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</FrameLayout>
+            <ImageButton
+                android:id="@+id/acceptBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/heart"
+                android:contentDescription="@string/fill" />
+        </LinearLayout>
+
+        <com.mindorks.placeholderview.SwipePlaceHolderView
+            android:id="@+id/swipeView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

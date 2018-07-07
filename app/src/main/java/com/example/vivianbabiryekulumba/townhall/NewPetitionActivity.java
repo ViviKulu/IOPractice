@@ -1,36 +1,69 @@
 package com.example.vivianbabiryekulumba.townhall;
 
-import android.content.Intent;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.textservice.SpellCheckerSession;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.example.vivianbabiryekulumba.townhall.database.Petition;
+import com.example.vivianbabiryekulumba.townhall.database.PetitionRepository;
 
-public class NewPetitionActivity extends AppCompatActivity{
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class NewPetitionActivity extends AppCompatActivity {
 
     public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
+    EditText editText;
+    Button submitBtn;
+    Button saveBtn;
+    Petition petition;
+    PetitionRepository petitionRepository;
+    String petitionData;
+    String file = "petition.txt";
+    private String TAG = "NewActivity.class";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_petition);
 
-        EditText petition_body_et = findViewById(R.id.type_petition);
-        final Button submitBtn = findViewById(R.id.button_save);
+        editText = findViewById(R.id.type_petition);
 
-        submitBtn.setOnClickListener(v -> {
-            Intent intent_body_et = new Intent();
-            if(TextUtils.isEmpty(petition_body_et.getText())){
-                setResult(RESULT_CANCELED, intent_body_et);
-            }else{
-                String petition_body = petition_body_et.getText().toString();
-                intent_body_et.putExtra(EXTRA_REPLY,petition_body);
-                setResult(RESULT_OK, intent_body_et);
+        submitBtn = findViewById(R.id.button_submit);
+        saveBtn = findViewById(R.id.button_save);
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                petitionData = editText.getText().toString();
+                Log.d(TAG, "onClick: " + petitionData);
+                try{
+                    FileOutputStream fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE);
+                    fileOutputStream.write(petitionData.getBytes());
+                    fileOutputStream.close();
+                    Log.d(TAG, "onClick: " + fileOutputStream);
+                    Toast.makeText(getApplicationContext(), "Petition written to file!", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
-            finish();
         });
 
+
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                petition = new Petition(file);
+                petitionRepository = new PetitionRepository(getApplication());
+                petitionRepository.insert(petition);
+                Log.d(TAG, "onClick: " + petition);
+            }
+        });
     }
 }
