@@ -23,4 +23,7 @@ public class Petition {
         return petition;
     }
 
+    public void setPetition(@NonNull String petition) {
+        this.petition = petition;
+    }
 }

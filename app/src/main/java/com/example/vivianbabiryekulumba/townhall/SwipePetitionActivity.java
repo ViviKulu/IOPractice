@@ -1,15 +1,88 @@
 package com.example.vivianbabiryekulumba.townhall;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+
+import com.example.vivianbabiryekulumba.townhall.cardswipe.APIInterface;
+import com.example.vivianbabiryekulumba.townhall.cardswipe.ApplicationPOJO;
+import com.example.vivianbabiryekulumba.townhall.cardswipe.SwipeCard;
+import com.mindorks.placeholderview.SwipeDecor;
+import com.mindorks.placeholderview.SwipePlaceHolderView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SwipePetitionActivity extends AppCompatActivity {
+
+    private static final String TAG = "SwipePetitionActivity";
+    private SwipePlaceHolderView swipeView;
+    APIInterface apiInterface;
+    ApplicationPOJO applicationPOJO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_petition);
 
+        swipeView = findViewById(R.id.swipeView);
+        Context context = getApplicationContext();
+        TextView see_my_pet = findViewById(R.id.see_my_pet_txt);
+        TextView sub_new_pet = findViewById(R.id.sub_new_pet_txt);
+
+        swipeView.getBuilder()
+                .setDisplayViewCount(3)
+                .setSwipeDecor(new SwipeDecor()
+                .setPaddingTop(20)
+                .setRelativeScale(0.01f)
+                .setSwipeInMsgLayoutId(R.layout.card_swipe_in_msg_view)
+                .setSwipeOutMsgLayoutId(R.layout.card_swipe_out_msg_view));
+
+        Call<ApplicationPOJO> application = apiInterface.getApplication();
+        application.enqueue(new Callback<ApplicationPOJO>() {
+            @Override
+            public void onResponse(Call<ApplicationPOJO> call, Response<ApplicationPOJO> response) {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://applicationList.cityofnewyork.us/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                apiInterface = retrofit.create(APIInterface.class);
+                Log.d(TAG, "onResponse: " + response.body().client_agency);
+            }
+
+            @Override
+            public void onFailure(Call<ApplicationPOJO> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.toString());
+            }
+        });
+
+        for(int i = 0; i < applicationPOJO.applicationList.size(); i++){
+            apiInterface.getApplication();
+            swipeView.addView(new SwipeCard(context, applicationPOJO, swipeView));
+        }
+
+        findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swipeView.doSwipe(false);
+            }
+        });
+
+        findViewById(R.id.acceptBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swipeView.doSwipe(true);
+            }
+        });
+
+        sub_new_pet.setText(R.string.submit_pet);
+        see_my_pet.setText(R.string.see_pet);
 
     }
 }
