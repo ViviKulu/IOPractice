@@ -57,13 +57,13 @@ public class SwipeCard {
 
     @Resolve
     private void onResolved(){
-        client_agency.setText(applicationPOJO.client_agency);
-        description.setText(applicationPOJO.description);
-        dollar_amount.setText(applicationPOJO.dollar_amount);
-        phase.setText(applicationPOJO.phase);
-        project_id.setText(applicationPOJO.project_id);
-        scope.setText(applicationPOJO.scope);
-        status.setText(applicationPOJO.status);
+        client_agency.setText(applicationPOJO.getClientAgency());
+        description.setText(applicationPOJO.getDescription());
+        dollar_amount.setText(applicationPOJO.getDollarAmount());
+        phase.setText(applicationPOJO.getPhase());
+        project_id.setText(applicationPOJO.getProjectId());
+        scope.setText(applicationPOJO.getScope());
+        status.setText(applicationPOJO.getStatus());
     }
 
     @SwipeOut

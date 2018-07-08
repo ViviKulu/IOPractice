@@ -9,7 +9,7 @@ import retrofit2.http.GET;
  * Created by vivianbabiryekulumba on 7/7/18.
  */
 
-public interface APIInterface {
+public interface ApplicationNetworkService {
 
     @GET("resource/qjpa-k6a2.json")
     Call<ApplicationPOJO> getApplication();

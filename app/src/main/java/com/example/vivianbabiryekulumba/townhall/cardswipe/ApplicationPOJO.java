@@ -1,9 +1,7 @@
 package com.example.vivianbabiryekulumba.townhall.cardswipe;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by vivianbabiryekulumba on 7/1/18.
@@ -11,64 +9,103 @@ import java.util.List;
 
 public class ApplicationPOJO {
 
-//    private String client_agency;
-//    private String description;
-//    private String division;
-//    private String dollar_amount;
-//    private String phase;
-//    private String project_id;
-//    private String projected_construction_completion;
-//    private String scope;
-//    private String status;
-
     @SerializedName("client_agency")
-    public String client_agency;
-
+    @Expose
+    private String clientAgency;
     @SerializedName("description")
-    public String description;
-
+    @Expose
+    private String description;
     @SerializedName("division")
-    public String division;
-
+    @Expose
+    private String division;
     @SerializedName("dollar_amount")
-    public String dollar_amount;
-
+    @Expose
+    private String dollarAmount;
     @SerializedName("phase")
-    public String phase;
-
+    @Expose
+    private String phase;
     @SerializedName("project_id")
-    public String project_id;
-
+    @Expose
+    private String projectId;
     @SerializedName("projected_construction_completion")
-    public String projected_construction_completion;
-
+    @Expose
+    private String projectedConstructionCompletion;
     @SerializedName("scope")
-    public String scope;
-
+    @Expose
+    private String scope;
     @SerializedName("status")
-    public String status;
+    @Expose
+    private String status;
 
-    @SerializedName("applicationList")
-    public List<ApplicationData> applicationList = new ArrayList<>();
+    public String getClientAgency() {
+        return clientAgency;
+    }
 
+    public void setClientAgency(String clientAgency) {
+        this.clientAgency = clientAgency;
+    }
 
-    private class ApplicationData {
-        @SerializedName("client_agency")
-        public String client_agency;
+    public String getDescription() {
+        return description;
+    }
 
-        @SerializedName("description")
-        public String description;
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-        @SerializedName("dollar_amount")
-        public String dollar_amount;
+    public String getDivision() {
+        return division;
+    }
 
-        @SerializedName("project_id")
-        public String project_id;
+    public void setDivision(String division) {
+        this.division = division;
+    }
 
-        @SerializedName("scope")
-        public String scope;
+    public String getDollarAmount() {
+        return dollarAmount;
+    }
 
-        @SerializedName("status")
-        public String status;
+    public void setDollarAmount(String dollarAmount) {
+        this.dollarAmount = dollarAmount;
+    }
+
+    public String getPhase() {
+        return phase;
+    }
+
+    public void setPhase(String phase) {
+        this.phase = phase;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectedConstructionCompletion() {
+        return projectedConstructionCompletion;
+    }
+
+    public void setProjectedConstructionCompletion(String projectedConstructionCompletion) {
+        this.projectedConstructionCompletion = projectedConstructionCompletion;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
