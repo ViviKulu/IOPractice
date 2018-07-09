@@ -1,6 +1,6 @@
 package com.example.vivianbabiryekulumba.townhall.cardswipe;
 
-import com.example.vivianbabiryekulumba.townhall.database.Petition;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,5 +12,5 @@ import retrofit2.http.GET;
 public interface ApplicationNetworkService {
 
     @GET("resource/qjpa-k6a2.json")
-    Call<ApplicationPOJO> getApplication();
+    Call<List<ApplicationPOJO>> getApplication();
 }
