@@ -46,11 +46,9 @@ public class SwipeCard {
     private TextView status;
 
     private ApplicationPOJO applicationPOJO;
-    private Context context;
     private SwipePlaceHolderView swipeView;
 
-    public SwipeCard(Context contexts, ApplicationPOJO application, SwipePlaceHolderView swipePlaceHolderView){
-        context = contexts;
+    public SwipeCard(ApplicationPOJO application, SwipePlaceHolderView swipePlaceHolderView){
         applicationPOJO = application;
         swipeView = swipePlaceHolderView;
     }
