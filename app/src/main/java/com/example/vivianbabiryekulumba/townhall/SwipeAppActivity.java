@@ -10,17 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.vivianbabiryekulumba.townhall.appRecyclerView.AppAdapter;
 import com.example.vivianbabiryekulumba.townhall.appRecyclerView.ApplicationNetworkService;
 import com.example.vivianbabiryekulumba.townhall.appRecyclerView.ApplicationPOJO;
-import com.mindorks.placeholderview.SwipeDecor;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
-
 import java.util.ArrayList;
-import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,6 +25,8 @@ public class SwipeAppActivity extends AppCompatActivity {
 
     private static final String TAG = "SwipeAppActivity";
     private ArrayList<ApplicationPOJO> applicationDataList;
+    Retrofit retrofit;
+    AppAdapter appAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +41,7 @@ public class SwipeAppActivity extends AppCompatActivity {
         subBtn.setText(R.string.submitPet);
         seeBtn.setText(R.string.seeApps);
 
-        AppAdapter appAdapter = new AppAdapter();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(appAdapter);
-
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl("https://data.cityofnewyork.us/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -64,7 +54,12 @@ public class SwipeAppActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<ArrayList<ApplicationPOJO>> call, @NonNull Response<ArrayList<ApplicationPOJO>> response) {
                 if(response.isSuccessful()){
                     applicationDataList = response.body();
-                    Log.d(TAG, "onResponse: success" + applicationDataList.size());
+                    Log.d(TAG, "onResponse: " + applicationDataList.size());
+                    AppAdapter appAdapter = new AppAdapter(applicationDataList);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(appAdapter);
                 }
             }
 
