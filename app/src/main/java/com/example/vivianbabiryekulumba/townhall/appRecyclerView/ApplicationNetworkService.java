@@ -1,5 +1,6 @@
-package com.example.vivianbabiryekulumba.townhall.cardswipe;
+package com.example.vivianbabiryekulumba.townhall.appRecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -12,5 +13,5 @@ import retrofit2.http.GET;
 public interface ApplicationNetworkService {
 
     @GET("resource/qjpa-k6a2.json")
-    Call<List<ApplicationPOJO>> getApplication();
+    Call<ArrayList<ApplicationPOJO>> getApplication();
 }

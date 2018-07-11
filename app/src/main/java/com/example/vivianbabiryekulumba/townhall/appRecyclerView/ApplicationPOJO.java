@@ -1,4 +1,4 @@
-package com.example.vivianbabiryekulumba.townhall.cardswipe;
+package com.example.vivianbabiryekulumba.townhall.appRecyclerView;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -36,6 +36,20 @@ public class ApplicationPOJO {
     @SerializedName("status")
     @Expose
     private String status;
+
+    public ApplicationPOJO(String clientAgency, String description, String division, String dollarAmount,
+                           String phase, String projectId, String projectedConstructionCompletion,
+                           String scope, String status) {
+        this.clientAgency = clientAgency;
+        this.description = description;
+        this.division = division;
+        this.dollarAmount = dollarAmount;
+        this.phase = phase;
+        this.projectId = projectId;
+        this.projectedConstructionCompletion = projectedConstructionCompletion;
+        this.scope = scope;
+        this.status = status;
+    }
 
     public String getClientAgency() {
         return clientAgency;

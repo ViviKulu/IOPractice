@@ -54,8 +54,6 @@ public class NewPetitionActivity extends AppCompatActivity {
             }
         });
 
-
-
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +61,7 @@ public class NewPetitionActivity extends AppCompatActivity {
                 petitionRepository = new PetitionRepository(getApplication());
                 petitionRepository.insert(petition);
                 Log.d(TAG, "onClick: " + petition);
+                Toast.makeText(getApplicationContext(), "Petition saved to database!", Toast.LENGTH_SHORT).show();
             }
         });
     }
