@@ -21,6 +21,7 @@ public class NewPetitionActivity extends AppCompatActivity {
     EditText editText;
     Button submitBtn;
     Button saveBtn;
+    Button viewBtn;
     Petition petition;
     PetitionRepository petitionRepository;
     String petitionData;
@@ -36,6 +37,7 @@ public class NewPetitionActivity extends AppCompatActivity {
 
         submitBtn = findViewById(R.id.button_submit);
         saveBtn = findViewById(R.id.button_save);
+        viewBtn = findViewById(R.id.button_view);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,13 @@ public class NewPetitionActivity extends AppCompatActivity {
                 petitionRepository.insert(petition);
                 Log.d(TAG, "onClick: " + petition);
                 Toast.makeText(getApplicationContext(), "Petition saved to database!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        viewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

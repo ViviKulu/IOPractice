@@ -3,6 +3,9 @@ package com.example.vivianbabiryekulumba.townhall.appRecyclerView;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by vivianbabiryekulumba on 7/1/18.
  */
@@ -36,6 +39,8 @@ public class ApplicationPOJO {
     @SerializedName("status")
     @Expose
     private String status;
+
+    private ArrayList<ApplicationPOJO> applicationDataList;
 
     public ApplicationPOJO(String clientAgency, String description, String division, String dollarAmount,
                            String phase, String projectId, String projectedConstructionCompletion,
@@ -121,5 +126,13 @@ public class ApplicationPOJO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<ApplicationPOJO> getApplicationDataList(){
+        return applicationDataList;
+    }
+
+    public void setApplicationDataList(ArrayList<ApplicationPOJO> applicationDataList) {
+        this.applicationDataList = applicationDataList;
     }
 }
