@@ -1,34 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.vivianbabiryekulumba.townhall.SwipePetitionActivity">
-
-    <TextView
-        android:id="@+id/see_my_pet_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="168dp"
-        android:textColor="#fff"
-        android:textSize="26sp"
-        android:layout_marginStart="100dp"
-        tools:text="See applications"
-        tools:textColor="#fff"/>
-
-    <TextView
-        android:id="@+id/sub_new_pet_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#fff"
-        android:textSize="26sp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="250dp"
-        tools:text="Submit new petition"
-        tools:textColor="#fff"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context="com.example.vivianbabiryekulumba.townhall.SwipeAppActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -38,34 +14,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/swipe_app_rec_view"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="400dp" />
 
-            <ImageButton
-                android:id="@+id/rejectBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/cancel"
-                android:contentDescription="@string/fill" />
+        <Button
+            android:id="@+id/sub_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:textColor="#000"
+            android:textSize="26sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Submit new petition"
+            tools:textColor="#000" />
 
-            <ImageButton
-                android:id="@+id/acceptBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/heart"
-                android:contentDescription="@string/fill" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/see_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="168dp"
+            android:textColor="#000"
+            android:textSize="26sp"
+            tools:text="See applications"
+            tools:textColor="#000" />
 
-        <com.mindorks.placeholderview.SwipePlaceHolderView
-            android:id="@+id/swipeView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </FrameLayout>
 
-</RelativeLayout>
+</LinearLayout>
