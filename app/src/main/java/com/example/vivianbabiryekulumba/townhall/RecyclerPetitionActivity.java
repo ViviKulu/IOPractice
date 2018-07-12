@@ -18,6 +18,7 @@ import com.example.vivianbabiryekulumba.townhall.database.Petition;
 import com.example.vivianbabiryekulumba.townhall.database.PetitionAdapter;
 import com.example.vivianbabiryekulumba.townhall.database.PetitionViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerPetitionActivity extends AppCompatActivity {

@@ -3,6 +3,7 @@ package com.example.vivianbabiryekulumba.townhall.database;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.example.vivianbabiryekulumba.townhall.R;
 
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class PetitionAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
 
@@ -30,9 +33,8 @@ public class PetitionAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PetitionViewHolder holder, int position) {
-        if(petitionsList != null){
-            holder.onBind(petitionsList.get(position));
-        }
+        holder.onBind(petitionsList.get(position));
+        Log.d(TAG, "onBindViewHolder: ran" + petitionsList.size());
     }
 
     public void setPetitionsList(List<Petition> petitions){

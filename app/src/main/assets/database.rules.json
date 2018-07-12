@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "petitions": {
+      ".read": true,
+        ".write": "auth.petitionId === $petitionId"
+    }
+  }
+}
