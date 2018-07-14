@@ -16,4 +16,8 @@
     <string name="view_petition">view petition</string>
     <string name="seeApps">See your applications</string>
     <string name="submitPet">Submit a new petition</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="signIn">Sign in with Google</string>
+    <string name="write_announcement">Write announcement</string>
 </resources>
